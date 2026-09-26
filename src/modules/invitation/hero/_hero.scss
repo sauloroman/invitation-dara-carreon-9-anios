@@ -237,6 +237,10 @@
             font-size: clamp(1.8rem, 3vw, 2.4rem);
         }
 
+        &-name {
+            margin-bottom: 2rem;
+        }
+
         &-address {
             font-size: clamp(1.4rem, 3vw, 2.4rem);
         }

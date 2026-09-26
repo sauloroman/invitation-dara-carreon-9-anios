@@ -221,13 +221,13 @@ export const HeroSection: React.FC = () => {
                     animate="visible"
                 >
                     <motion.div className="hero-section__date-item" variants={dateItemVariants}>
-                        Sábado
+                        Martes
                     </motion.div>
                     <motion.div className="hero-section__date-item" variants={dateItemVariants}>
-                        Oct 03
+                        Sep 29
                     </motion.div>
                     <motion.div className="hero-section__date-item" variants={dateItemVariants}>
-                        03:00 p.m
+                        11:00 a.m
                     </motion.div>
                 </motion.div>
 
@@ -241,7 +241,7 @@ export const HeroSection: React.FC = () => {
                         className="hero-section__location-name"
                         variants={locationItemVariants}
                     >
-                        Área de Salón Multiusos
+                        Salón de clases #41 Colegio Francés Hidalgo de Aguascalientes S.C.
                     </motion.p>
                     <motion.p
                         className="hero-section__location-address"
@@ -249,7 +249,7 @@ export const HeroSection: React.FC = () => {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
                     >
-                        Av. Mediterraneo 104, Rancho Santa Monica
+                        Av. Del Lago 141, Jardines del Parque, 20286 Aguascalientes, Ags.
                     </motion.p>
                 </motion.div>
             </div>

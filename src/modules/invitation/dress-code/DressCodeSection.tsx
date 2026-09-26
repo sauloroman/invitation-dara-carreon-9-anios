@@ -61,6 +61,22 @@ export const DressCodeSection: React.FC = () => {
         return null
     }
 
+    const mainDish =
+        ((dressCodeConfig as unknown as Record<string, unknown>)?.subtitle as string) ||
+        "Hamburguesa con carne y queso de Carl's Jr"
+    const description =
+        dressCodeConfig.description ||
+        'Acompañado de ricos complementos para todos los invitados:'
+    const drink =
+        ((dressCodeConfig as unknown as Record<string, unknown>)?.drink as string) ||
+        'Agua de jamaica'
+    const fruit =
+        ((dressCodeConfig as unknown as Record<string, unknown>)?.fruit as string) ||
+        'Vaso de fruta: Duraznos, Uva y Zarzamora'
+    const dessert =
+        ((dressCodeConfig as unknown as Record<string, unknown>)?.dessert as string) ||
+        'Postre: Bolo de dulces'
+
     return (
         <section id="dress-code" className="dress-code-section">
             <div className="dress-code-section__garlands">
@@ -218,7 +234,7 @@ export const DressCodeSection: React.FC = () => {
                                         startOffset="50%"
                                         textAnchor="middle"
                                     >
-                                        ¡Prepara tu Look Vaquero!
+                                        ¡Para Chuparse los Dedos!
                                     </textPath>
                                 </text>
                             </svg>
@@ -250,7 +266,7 @@ export const DressCodeSection: React.FC = () => {
                                     ease: 'easeInOut',
                                 }}
                             >
-                                CÓDIGO DE
+                                NUESTRO
                             </motion.span>
                             <motion.div
                                 className="dress-code-card__name-banner"
@@ -266,7 +282,7 @@ export const DressCodeSection: React.FC = () => {
                                 }}
                             >
                                 <span className="dress-code-card__name-banner-text">
-                                    VESTIMENTA
+                                    MENÚ
                                 </span>
                             </motion.div>
                         </motion.div>
@@ -287,11 +303,11 @@ export const DressCodeSection: React.FC = () => {
                             whileHover={{ scale: 1.08 }}
                         >
                             <span className="dress-code-card__badge-theme-text">
-                                ⭐ {dressCodeConfig.title || 'Tu mejor outfit'} ⭐
+                                🍔 {mainDish} 🍔
                             </span>
                         </motion.div>
 
-                        {dressCodeConfig.description && (
+                        {description && (
                             <motion.p
                                 className="dress-code-card__description"
                                 variants={itemVariants}
@@ -306,7 +322,7 @@ export const DressCodeSection: React.FC = () => {
                                 }}
                                 whileHover={{ scale: 1.03 }}
                             >
-                                {dressCodeConfig.description}
+                                {description}
                             </motion.p>
                         )}
 
@@ -320,7 +336,7 @@ export const DressCodeSection: React.FC = () => {
                                 transition={{ repeat: Infinity, duration: 2.6, ease: 'easeInOut' }}
                                 whileHover={{ scale: 1.1, rotate: -2 }}
                             >
-                                🤠 Estilo Libre / Vaquero
+                                🥤 {drink}
                             </motion.span>
                             <motion.span
                                 className="dress-code-card__tag"
@@ -328,7 +344,7 @@ export const DressCodeSection: React.FC = () => {
                                 transition={{ repeat: Infinity, duration: 2.8, ease: 'easeInOut', delay: 0.2 }}
                                 whileHover={{ scale: 1.1, rotate: 2 }}
                             >
-                                👢 Botas o Tenis Cómodos
+                                🍇 {fruit}
                             </motion.span>
                             <motion.span
                                 className="dress-code-card__tag"
@@ -336,7 +352,7 @@ export const DressCodeSection: React.FC = () => {
                                 transition={{ repeat: Infinity, duration: 3.0, ease: 'easeInOut', delay: 0.4 }}
                                 whileHover={{ scale: 1.1, rotate: -2 }}
                             >
-                                🎈 ¡A Jugar y Divertirse!
+                                🍬 {dessert}
                             </motion.span>
                         </motion.div>
                     </div>

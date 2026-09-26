@@ -43,7 +43,7 @@
       "showHero": true,
       "names": "Dara - 9 años",
       "subtitle": "Ven a festejar conmigo",
-      "date": "03 DE OCTUBRE DE 2026",
+      "date": "29 DE SEPTIEMBRE DE 2026",
       "city": "Aguascalientes, México"
     },
     "scratchReveal": {
@@ -51,12 +51,12 @@
     },
     "message": {
       "showMessage": true,
-      "message": "¡Quiero que vengas a jugar y pasarla increible!",
+      "message": "¡Pasémosla increible y disfrutemos un rico lunch!",
       "quote": "El amor no es mirarse el uno al otro, sino mirar juntos en la misma dirección."
     },
     "countdown": {
       "showCountdown": true,
-      "targetDate": "2026-10-03T15:00:00"
+      "targetDate": "2026-09-29T11:00:00"
     },
     "family": {
       "showFamily": false,
@@ -68,12 +68,12 @@
       "showPlaces": true,
       "locations": [
         {
-          "title": "Área de Salón Multiusos",
+          "title": "Salón de clases #41, CFH Ags",
           "venue": "19:00 HRS",
-          "location": "Av. Mediterraneo 104, Rancho Santa Monica",
+          "location": "Av. Del Lago 141, Jardines del Parque, 20286 Aguascalientes, Ags",
           "time": "19:00 HRS",
-          "date": "26-09-2026",
-          "url": "https://maps.app.goo.gl/gseeHcEztLtJAVBZA"
+          "date": "29-09-2026",
+          "url": "https://maps.app.goo.gl/h1F6bZfkbVWvgDP77?g_st=iw"
         }
       ]
     },
@@ -100,22 +100,12 @@
     },
     "dressCode": {
       "showDressCode": true,
-      "title": "Tus mejor outfit",
-      "description": "Puedes traer lo que quieras. ¡Aquí lo que importa es divertirse!",
-      "attire": {
-        "men": "Traje oscuro y corbata.",
-        "women": "Vestido largo o de noche."
-      },
-      "colors": {
-        "suggested": [
-          "negro",
-          "azul marino"
-        ],
-        "avoid": [
-          "blanco",
-          "beige"
-        ]
-      }
+      "title": "Menú",
+      "subtitle": "Hamburguesa con carne y queso de Carl's Jr",
+      "description": "Acompañado de ricos complementos para todos los invitados:",
+      "drink": "Agua de jamaica",
+      "fruit": "Vaso de fruta: Duraznos, Uva y Zarzamora",
+      "dessert": "Postre: Bolo de dulces"
     },
     "details": {
       "showDetails": true,
@@ -142,8 +132,8 @@
       "showConfirmation": true,
       "type": "whatsapp",
       "isQuantityFree": false,
-      "whatsappPhone": "4499198188",
-      "whatsappMessage": "¡Hola! Confirmo mi asistencia a la fiesta de Dara ✨"
+      "whatsappPhone": "4493626123",
+      "whatsappMessage": "¡Hola! Tengo una duda sobre el cumpleaños de Dara ✨🤠"
     },
     "graduates": {
       "showGraduates": false

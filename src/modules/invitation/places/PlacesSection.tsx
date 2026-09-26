@@ -345,7 +345,7 @@ export const PlacesSection: React.FC = () => {
                                         ease: 'easeInOut',
                                     }}
                                 >
-                                    UBICACIONES
+                                    UBICACIÓN
                                 </motion.span>
                                 <motion.div
                                     className="places-card__name-banner"
@@ -382,7 +382,7 @@ export const PlacesSection: React.FC = () => {
                                     }}
                                     whileHover={{ scale: 1.06 }}
                                 >
-                                    {loc.title || 'Área de Salón Multiusos'}
+                                    {loc.title || 'Salón de clases #41 Colegio Francés Hidalgo de Aguascalientes S.C.'}
                                 </motion.p>
                                 <motion.p
                                     className="places-card__location-address"
@@ -399,7 +399,7 @@ export const PlacesSection: React.FC = () => {
                                     whileHover={{ scale: 1.04 }}
                                     whileTap={{ scale: 0.98 }}
                                 >
-                                    {loc.location || 'Av. Mediterraneo 104, Rancho Santa Monica, Aguascalientes, Ags, México'}
+                                    {loc.location || 'Av. Del Lago 141, Jardines del Parque, 20286 Aguascalientes, Ags. México'}
                                 </motion.p>
                             </motion.div>
 

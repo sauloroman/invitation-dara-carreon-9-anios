@@ -13,7 +13,7 @@ import cuerdaLeft from '@/assets/images/icons/cuerda-left.png'
 import cuerdaRight from '@/assets/images/icons/cuerda-right.png'
 
 const PHONE_NUMBER = '4493626123'
-const WHATSAPP_URL = `https://wa.me/52${PHONE_NUMBER}?text=${encodeURIComponent('¡Hola! Quiero confirmar mi asistencia al cumpleaños de Dara ✨🤠')}`
+const WHATSAPP_URL = `https://wa.me/52${PHONE_NUMBER}?text=${encodeURIComponent('¡Hola! Tengo una duda sobre el cumpleaños de Dara ✨🤠')}`
 
 const STARS_DATA: Array<{
     id: number
@@ -95,7 +95,7 @@ export const ConfirmationSection: React.FC = () => {
                     </motion.div>
 
                     <div className="confirmation-section__icon">
-                        <img src={icon} alt="Jessie Confirmación" />
+                        <img src={icon} alt="Jessie Contacto" />
                     </div>
 
                     <motion.div
@@ -115,8 +115,8 @@ export const ConfirmationSection: React.FC = () => {
                 </div>
 
                 <SectionHeader
-                    pretitle="Confirmación de Asistencia"
-                    title="¿Nos Acompañas?"
+                    pretitle="¿Tienes alguna duda?"
+                    title="¡Contáctanos!"
                     align="center"
                 />
 
@@ -135,7 +135,7 @@ export const ConfirmationSection: React.FC = () => {
                             </div>
                             <h3 className="confirmation-card__title">★ WHATSAPP ★</h3>
                             <p className="confirmation-card__desc">
-                                Envía un mensaje a la mamá de Dara para confirmar tu asistencia
+                                Envía un mensaje a la mamá de Dara para resolver cualquier duda
                             </p>
                             <span className="confirmation-card__phone">449 362 6123</span>
                             <Button
@@ -163,7 +163,7 @@ export const ConfirmationSection: React.FC = () => {
                             </div>
                             <h3 className="confirmation-card__title">★ LLAMADA ★</h3>
                             <p className="confirmation-card__desc">
-                                Llama directamente a la mamá de Dara para confirmar tu lugar
+                                Llama directamente a la mamá de Dara para aclarar cualquier duda
                             </p>
                             <span className="confirmation-card__phone">449 362 6123</span>
                             <Button

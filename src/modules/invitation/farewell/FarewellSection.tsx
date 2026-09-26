@@ -289,7 +289,6 @@ export const FarewellSection: React.FC = () => {
                     </svg>
                 </motion.div>
 
-                {/* Jessie (character-6.png) centrada de forma limpia antes del nombre DARITA */}
                 <motion.div
                     className="farewell__character-center"
                     variants={characterVariants}
@@ -311,7 +310,6 @@ export const FarewellSection: React.FC = () => {
                         }}
                     />
 
-                    {/* Texto morado con contorno blanco del hero */}
                     <motion.div
                         className="farewell__badge-text"
                         variants={stickerVariants}
@@ -322,7 +320,6 @@ export const FarewellSection: React.FC = () => {
                     </motion.div>
                 </motion.div>
 
-                {/* Nombre Toy Story 3D DARITA CUMPLE 9 */}
                 <motion.div
                     className="farewell__name"
                     variants={nameVariants}
@@ -373,9 +370,7 @@ export const FarewellSection: React.FC = () => {
                         </div>
 
                         <p className="farewell__kids-quote">
-                            «¡Tener amigos como tú hace que cada día sea una gran aventura!
-                            Gracias por venir a reír, jugar y celebrar mis 9 años.
-                            ¡Tu presencia es mi regalo más bonito!»
+                            «¡Tener amigos como tú hace que cada día sea una gran aventura!»
                         </p>
 
                         <div className="farewell__thankyou-pill">
@@ -390,7 +385,6 @@ export const FarewellSection: React.FC = () => {
                     </div>
                 </motion.div>
 
-                {/* Caballo Tiro al Blanco centrado justo debajo de la nota y antes de los créditos */}
                 <motion.div
                     className="farewell__bullseye"
                     variants={cardVariants}

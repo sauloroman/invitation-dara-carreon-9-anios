@@ -169,10 +169,10 @@ export const DetailsSection: React.FC = () => {
                                 viewport={{ once: true }}
                             >
                                 <h3 className="details-section__notice-title">
-                                    ★ ¡DIVERSIÓN! ★
+                                    ★ ¡ALERGIAS! ★
                                 </h3>
                                 <p className="details-section__notice-text">
-                                    ¡Ven listo para jugar y pasarla increíble!
+                                    Si tienes alguna alergia o restricción alimenticia, favor de notificar.
                                 </p>
                             </motion.div>
                         </div>
