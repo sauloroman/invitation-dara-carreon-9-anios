@@ -56,7 +56,7 @@
     },
     "countdown": {
       "showCountdown": true,
-      "targetDate": "2026-09-29T11:00:00"
+      "targetDate": "2026-09-29T00:00:00"
     },
     "family": {
       "showFamily": false,
@@ -71,7 +71,6 @@
           "title": "Salón de clases #41, CFH Ags",
           "venue": "19:00 HRS",
           "location": "Av. Del Lago 141, Jardines del Parque, 20286 Aguascalientes, Ags",
-          "time": "19:00 HRS",
           "date": "29-09-2026",
           "url": "https://maps.app.goo.gl/h1F6bZfkbVWvgDP77?g_st=iw"
         }

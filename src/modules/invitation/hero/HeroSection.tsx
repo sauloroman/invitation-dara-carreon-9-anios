@@ -227,7 +227,7 @@ export const HeroSection: React.FC = () => {
                         Sep 29
                     </motion.div>
                     <motion.div className="hero-section__date-item" variants={dateItemVariants}>
-                        11:00 a.m
+                        Hora Recreo
                     </motion.div>
                 </motion.div>
 
