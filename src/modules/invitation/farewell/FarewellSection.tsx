@@ -204,7 +204,6 @@ export const FarewellSection: React.FC = () => {
                 />
             </motion.div>
 
-            {/* Icono de herradura vaquera (places-icon.png) */}
             <motion.div
                 className="farewell__horseshoe"
                 initial={{ opacity: 0, scale: 0.4, rotate: -25 }}
@@ -331,7 +330,7 @@ export const FarewellSection: React.FC = () => {
                     </span>
                     <div className="farewell__name-banner">
                         <span className="farewell__name-banner-text">
-                            CUMPLE 9
+                            Especial
                         </span>
                     </div>
                 </motion.div>
