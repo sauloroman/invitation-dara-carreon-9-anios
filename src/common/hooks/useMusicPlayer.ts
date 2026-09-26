@@ -2,9 +2,22 @@ import { useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import type { RootState } from '@/store/store'
-import { playMusic, pauseMusic, toggleMusic } from '@/store/ui/music.slice'
+import { playMusic, pauseMusic } from '@/store/ui/music.slice'
 import { useInvitationConfig } from './useInvitationConfig'
 import type { MusicPlayerProps, MusicPlayerVariant, ButtonVariant } from '@/common/types'
+import song from '@/assets/music/song.mp3'
+
+let sharedAudio: HTMLAudioElement | null = null
+
+export const getSharedAudio = (): HTMLAudioElement | null => {
+    if (typeof window === 'undefined') return null
+    if (!sharedAudio) {
+        sharedAudio = new Audio(song)
+        sharedAudio.loop = true
+        sharedAudio.preload = 'auto'
+    }
+    return sharedAudio
+}
 
 export const useMusicPlayer = (props?: MusicPlayerProps) => {
     const dispatch = useDispatch()
@@ -15,19 +28,56 @@ export const useMusicPlayer = (props?: MusicPlayerProps) => {
     const musicConfig = ui?.music || theme?.music
 
     useEffect(() => {
-        if (!audioRef.current) return
-        if (isPlaying) {
-            audioRef.current.play().catch(() => {
-                dispatch(pauseMusic())
-            })
-        } else {
-            audioRef.current.pause()
-        }
-    }, [isPlaying, dispatch])
+        const audio = getSharedAudio()
+        if (!audio) return
 
-    const onPlayMusic = () => dispatch(playMusic())
-    const onPauseMusic = () => dispatch(pauseMusic())
-    const onToggleMusic = () => dispatch(toggleMusic())
+        if (isPlaying) {
+            if (audio.paused) {
+                audio.play().catch((err) => {
+                    console.warn('Audio play was prevented by browser policy:', err)
+                })
+            }
+        } else {
+            if (!audio.paused) {
+                audio.pause()
+            }
+        }
+    }, [isPlaying])
+
+    const onPlayMusic = () => {
+        dispatch(playMusic())
+        const audio = getSharedAudio()
+        if (audio && audio.paused) {
+            audio.play().catch((err) => {
+                console.warn('Direct play prevented:', err)
+            })
+        }
+    }
+
+    const onPauseMusic = () => {
+        dispatch(pauseMusic())
+        const audio = getSharedAudio()
+        if (audio && !audio.paused) {
+            audio.pause()
+        }
+    }
+
+    const onToggleMusic = () => {
+        const audio = getSharedAudio()
+        if (isPlaying) {
+            dispatch(pauseMusic())
+            if (audio && !audio.paused) {
+                audio.pause()
+            }
+        } else {
+            dispatch(playMusic())
+            if (audio && audio.paused) {
+                audio.play().catch((err) => {
+                    console.warn('Toggle play prevented:', err)
+                })
+            }
+        }
+    }
 
     const isHiddenRoute = location.pathname === '/envelope' || location.pathname === '/search'
     const isMusicVisible = (props?.show ?? musicConfig?.show ?? config?.hasMusic ?? true) && !isHiddenRoute
@@ -49,5 +99,6 @@ export const useMusicPlayer = (props?: MusicPlayerProps) => {
         onToggleMusic,
     }
 }
+
 
 

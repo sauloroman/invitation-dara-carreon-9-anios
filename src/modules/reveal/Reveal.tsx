@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { useReveal, useMusicPlayer, useConfetti } from '@/common/hooks'
+import { getSharedAudio } from '@/common/hooks/useMusicPlayer'
 import { Particles } from '@/common/components/particles/Particles'
 import { RevealRight } from './RevealRight/RevealRight'
 import { RevealLeft } from './RevealLeft/RevealLeft'
@@ -23,6 +24,14 @@ export const Reveal: React.FC = () => {
     const { fireConfetti } = useConfetti()
 
     const handleExtremeReached = () => {
+        // 1. Iniciar la música de inmediato y de forma síncrona con el gesto del usuario
+        try {
+            onPlayMusic()
+        } catch (e) {
+            console.warn('Audio play error:', e)
+        }
+
+        // 2. Disparar confeti de celebración
         try {
             fireConfetti({
                 particleCount: 600,
@@ -46,12 +55,7 @@ export const Reveal: React.FC = () => {
             console.error('Confetti error:', e)
         }
 
-        try {
-            onPlayMusic()
-        } catch {
-            // Audio autoplay fallback
-        }
-
+        // 3. Navegar a la invitación principal
         setTimeout(() => {
             navigate('/invitation')
         }, 420)
@@ -63,6 +67,7 @@ export const Reveal: React.FC = () => {
         x,
         leftWidth,
         handleDrag,
+        handleDragEnd,
     } = useReveal({
         onExtremeReached: handleExtremeReached,
         threshold: 25,
@@ -91,6 +96,18 @@ export const Reveal: React.FC = () => {
                 dragMomentum={false}
                 style={{ x }}
                 onDrag={handleDrag}
+                onDragEnd={handleDragEnd}
+                onPointerDown={() => {
+                    // Desbloquear audio en el primer toque del usuario
+                    try {
+                        const audio = getSharedAudio()
+                        if (audio && audio.paused) {
+                            audio.load()
+                        }
+                    } catch (err) {
+                        console.debug('Audio pre-warm suppressed:', err)
+                    }
+                }}
             >
                 <div className="reveal__handle-line" />
                 <div className="reveal__handle-container">

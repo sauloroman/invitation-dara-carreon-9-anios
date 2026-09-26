@@ -33,18 +33,36 @@ export const useReveal = ({ onExtremeReached, threshold = 20 }: UseRevealOptions
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
+    const triggerSlide = (side: 'left' | 'right') => {
+        if (isTriggered) return
+        setIsTriggered(true)
+        if (side === 'left') {
+            x.set(0)
+        } else {
+            x.set(containerWidth)
+        }
+        onExtremeReached?.(side)
+    }
+
     const handleDrag = () => {
         if (isTriggered || containerWidth === 0) return
         const currentX = x.get()
 
         if (currentX <= threshold) {
-            setIsTriggered(true)
-            x.set(0)
-            onExtremeReached?.('left')
+            triggerSlide('left')
         } else if (currentX >= containerWidth - threshold) {
-            setIsTriggered(true)
-            x.set(containerWidth)
-            onExtremeReached?.('right')
+            triggerSlide('right')
+        }
+    }
+
+    const handleDragEnd = () => {
+        if (isTriggered || containerWidth === 0) return
+        const currentX = x.get()
+
+        if (currentX <= containerWidth * 0.35 || currentX <= threshold) {
+            triggerSlide('left')
+        } else if (currentX >= containerWidth * 0.65 || currentX >= containerWidth - threshold) {
+            triggerSlide('right')
         }
     }
 
@@ -54,6 +72,7 @@ export const useReveal = ({ onExtremeReached, threshold = 20 }: UseRevealOptions
         x,
         leftWidth,
         handleDrag,
+        handleDragEnd,
         isTriggered,
         reset: () => {
             setIsTriggered(false)
