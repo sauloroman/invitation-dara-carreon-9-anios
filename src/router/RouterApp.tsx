@@ -4,7 +4,7 @@ import { Envelope, Invitation, Search, Ticket } from '@/modules'
 import { useInvitationConfig, useTicket } from '@/common/hooks'
 
 export const RouterApp: React.FC = () => {
-    const { config } = useInvitationConfig()
+    const { config, sections } = useInvitationConfig()
     const { ticket, isChecking, onCheckInitialData } = useTicket()
 
     useEffect(() => {
@@ -16,18 +16,25 @@ export const RouterApp: React.FC = () => {
     }
 
     const hasTicketingSystem = config.hasTicketingSystem
+    const showEnvelope = Boolean(
+        sections.envelope?.showenvelope ??
+        sections.envelop?.showenvelope ??
+        sections.envelope?.showEnvelope ??
+        sections.envelop?.showEnvelope
+    )
 
     return (
         <Routes>
             {!hasTicketingSystem ? (
                 <>
-                    <Route path="/" element={<Invitation />} />
+                    <Route path="/" element={showEnvelope ? <Envelope /> : <Invitation />} />
+                    <Route path="/invitation" element={<Invitation />} />
                     <Route path="/envelope" element={<Envelope />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </>
             ) : ticket ? (
                 <>
-                    <Route path="/" element={<Invitation />} />
+                    <Route path="/" element={showEnvelope ? <Envelope /> : <Invitation />} />
                     <Route path="/invitation" element={<Invitation />} />
                     <Route path="/ticket" element={<Ticket />} />
                     <Route path="/envelope" element={<Envelope />} />
@@ -43,4 +50,5 @@ export const RouterApp: React.FC = () => {
         </Routes>
     )
 }
+
 

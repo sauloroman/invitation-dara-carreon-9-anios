@@ -179,27 +179,6 @@ export const CountdownSection: React.FC = () => {
                     />
                 </motion.div>
 
-                <motion.div
-                    className="countdown-section__bullseye"
-                    variants={starVariants}
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    whileTap={{ scale: 0.92 }}
-                >
-                    <motion.img
-                        src={tiroAlBlanco}
-                        alt="Tiro al Blanco"
-                        animate={{
-                            y: [0, -6, 0],
-                            rotate: [-2, 3, -2],
-                        }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 3.2,
-                            ease: 'easeInOut',
-                        }}
-                    />
-                </motion.div>
-
                 <img src={frame} alt="Marco" className="countdown-section__frame-img" />
 
                 <div className="countdown-section__container">
@@ -234,7 +213,7 @@ export const CountdownSection: React.FC = () => {
                         <div className="countdown-section__calendar-grid">
                             {weekdays.map(day => (
                                 <div key={day} className="countdown-section__calendar-head">
-                                    {day}
+                                    {day.replace('.', '')}
                                 </div>
                             ))}
                             {days.map(dayItem => {
@@ -320,6 +299,35 @@ export const CountdownSection: React.FC = () => {
                     transition={{
                         repeat: Infinity,
                         duration: 3.5,
+                        ease: 'easeInOut',
+                    }}
+                />
+            </motion.div>
+
+            <motion.div
+                className="countdown-section__bullseye"
+                initial={{ opacity: 0, scale: 0.5, y: 30, rotate: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0, rotate: 6 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                    type: 'spring',
+                    stiffness: 260,
+                    damping: 14,
+                    delay: 0.4,
+                }}
+                whileHover={{ scale: 1.15, rotate: 0 }}
+                whileTap={{ scale: 0.94 }}
+            >
+                <motion.img
+                    src={tiroAlBlanco}
+                    alt="Tiro al Blanco"
+                    animate={{
+                        y: [0, -6, 0],
+                        rotate: [2, -3, 2],
+                    }}
+                    transition={{
+                        repeat: Infinity,
+                        duration: 3.2,
                         ease: 'easeInOut',
                     }}
                 />

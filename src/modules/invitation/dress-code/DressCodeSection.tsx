@@ -64,20 +64,30 @@ export const DressCodeSection: React.FC = () => {
     return (
         <section id="dress-code" className="dress-code-section">
             <div className="dress-code-section__garlands">
-                <div className="dress-code-section__garland dress-code-section__garland--left">
+                <motion.div
+                    className="dress-code-section__garland dress-code-section__garland--left"
+                    animate={{ rotate: [-2.2, 2.2, -2.2] }}
+                    transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut' }}
+                    style={{ transformOrigin: 'top center' }}
+                >
                     <img
                         src={tendido}
                         alt="Colgante decorativo izquierdo"
                         className="dress-code-section__garland-img"
                     />
-                </div>
-                <div className="dress-code-section__garland dress-code-section__garland--right">
+                </motion.div>
+                <motion.div
+                    className="dress-code-section__garland dress-code-section__garland--right"
+                    animate={{ rotate: [2.2, -2.2, 2.2] }}
+                    transition={{ repeat: Infinity, duration: 4.8, ease: 'easeInOut', delay: 0.6 }}
+                    style={{ transformOrigin: 'top center' }}
+                >
                     <img
                         src={tendido}
                         alt="Colgante decorativo derecho"
                         className="dress-code-section__garland-img"
                     />
-                </div>
+                </motion.div>
             </div>
 
             <div className="dress-code-section__container">

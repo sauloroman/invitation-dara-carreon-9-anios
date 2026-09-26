@@ -130,11 +130,11 @@
         justify-content: center;
 
         &:not(.btn--secondary):not(.btn--tertiary):not(.btn--outline):not(.btn--ghost):not(.btn--glass) {
-            background-color: vars.$color-primary;
+            background-color: vars.$color-2;
             color: #ffffff;
 
             &:hover:not(:disabled) {
-                background-color: vars.$color-primary-600;
+                background-color: vars.$color-2-600;
             }
         }
 

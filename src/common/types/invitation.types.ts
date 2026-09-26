@@ -1,6 +1,7 @@
 export interface EnvelopeConfig {
     showEnvelope?: boolean
-    type?: 'cerrado-abierto' | 'video-apertura' | 'animacion-apertura'
+    showenvelope?: boolean
+    type?: 'cerrado-abierto' | 'video-apertura' | 'animacion-apertura' | 'deslizante' | 'sobre-deslizante'
     [key: string]: unknown
 }
 

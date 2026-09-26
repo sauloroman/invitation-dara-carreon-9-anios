@@ -1,4 +1,5 @@
-﻿export { Envelope } from './envelope/Envelope'
+export { Envelope } from './envelope/Envelope'
+export { Reveal } from './reveal/Reveal'
 export { Invitation } from './invitation/Invitation'
 export { Search } from './search/Search'
 export { Ticket } from './ticket/Ticket'

@@ -14,7 +14,7 @@
   },
   "ui": {
     "menu": {
-      "show": true,
+      "show": false,
       "variant": "floating",
       "title": "Dara Carreón",
       "buttonVariant": "icon"
@@ -35,7 +35,7 @@
   "sections": {
     "envelope": {
       "showenvelope": true,
-      "type": "cerrado-abierto"
+      "type": "deslizante"
     },
     "hero": {
       "showHero": true,
