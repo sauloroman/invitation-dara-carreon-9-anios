@@ -1,0 +1,194 @@
+{
+  "eventType": "kids",
+  "packageTier": "cuarzo",
+  "commercial": {
+    "packageName": "Cuarzo (Premium / Formal)",
+    "basePrice": 399.99,
+    "ticketPrice": 0,
+    "addonsPrice": 0,
+    "totalPrice": 399.99
+  },
+  "theme": {
+    "fontPack": 3,
+    "palette": 9
+  },
+  "ui": {
+    "menu": {
+      "show": true,
+      "variant": "floating",
+      "title": "Dara Carreón",
+      "buttonVariant": "icon"
+    },
+    "music": {
+      "show": true,
+      "variant": "floating",
+      "title": "Toy Story Song",
+      "buttonVariant": "primary"
+    }
+  },
+  "config": {
+    "hasTicketingSystem": false,
+    "hasRSVP": true,
+    "hasMusic": true,
+    "hasMenu": true
+  },
+  "sections": {
+    "envelope": {
+      "showenvelope": true,
+      "type": "cerrado-abierto"
+    },
+    "hero": {
+      "showHero": true,
+      "names": "Dara - 9 años",
+      "subtitle": "Ven a festejar conmigo",
+      "date": "03 DE OCTUBRE DE 2026",
+      "city": "Aguascalientes, México"
+    },
+    "scratchReveal": {
+      "showScratchReveal": true
+    },
+    "message": {
+      "showMessage": true,
+      "message": "¡Quiero que vengas a jugar y pasarla increible!",
+      "quote": "El amor no es mirarse el uno al otro, sino mirar juntos en la misma dirección."
+    },
+    "countdown": {
+      "showCountdown": true,
+      "targetDate": "2026-10-03T15:00:00"
+    },
+    "family": {
+      "showFamily": false,
+      "title": "Con la Bendición de Nuestros Padres",
+      "parents": [],
+      "godparents": []
+    },
+    "places": {
+      "showPlaces": true,
+      "locations": [
+        {
+          "title": "Área de Salón Multiusos",
+          "venue": "19:00 HRS",
+          "location": "Av. Mediterraneo 104, Rancho Santa Monica",
+          "time": "19:00 HRS",
+          "date": "26-09-2026",
+          "url": "https://maps.app.goo.gl/gseeHcEztLtJAVBZA"
+        }
+      ]
+    },
+    "itinerary": {
+      "showItinerary": true,
+      "itinerary": [
+        {
+          "time": "19:00 HRS",
+          "event": "Llegada invitados"
+        },
+        {
+          "time": "20:00 HRS",
+          "event": "Comida informal"
+        },
+        {
+          "time": "21:00 HRS",
+          "event": "Show de magia"
+        },
+        {
+          "time": "22:00 HRS",
+          "event": "Fin del evento"
+        }
+      ]
+    },
+    "dressCode": {
+      "showDressCode": true,
+      "title": "Tus mejor outfit",
+      "description": "Puedes traer lo que quieras. ¡Aquí lo que importa es divertirse!",
+      "attire": {
+        "men": "Traje oscuro y corbata.",
+        "women": "Vestido largo o de noche."
+      },
+      "colors": {
+        "suggested": [
+          "negro",
+          "azul marino"
+        ],
+        "avoid": [
+          "blanco",
+          "beige"
+        ]
+      }
+    },
+    "details": {
+      "showDetails": true,
+      "title": "Detalles Importantes",
+      "noKids": false,
+      "noKidsMessage": "",
+      "punctuality": true,
+      "punctualityMessage": "Te sugerimos llegar con 15 minutos de anticipaciÃ³n para no perderte ningÃºn momento.",
+      "hashtag": "n"
+    },
+    "presents": {
+      "showPresents": true,
+      "title": "Mesa de Regalos",
+      "url": "https://mesaderegalos.liverpool.com.mx",
+      "bankDetails": {
+        "bank": "",
+        "account": "",
+        "clabe": "",
+        "holder": ""
+      },
+      "envelopeRain": false
+    },
+    "confirmation": {
+      "showConfirmation": true,
+      "type": "whatsapp",
+      "isQuantityFree": false,
+      "whatsappPhone": "4499198188",
+      "whatsappMessage": "¡Hola! Confirmo mi asistencia a la fiesta de Dara ✨"
+    },
+    "graduates": {
+      "showGraduates": false
+    },
+    "gallery": {
+      "showGallery": false
+    },
+    "guestPhotos": {
+      "showGuestPhotos": false,
+      "title": "Fotos de los Invitados",
+      "subtitle": "Comparte tus recuerdos y momentos de la fiesta con nosotros"
+    },
+    "ticket": {
+      "showTicket": false
+    },
+    "addons": {
+      "lodgingAndWeather": {
+        "showLodging": false,
+        "title": "Hospedaje & Clima",
+        "hotels": [],
+        "weatherCity": "Aguascalientes"
+      },
+      "ourStory": {
+        "showOurStory": false,
+        "title": "Nuestra Historia",
+        "quoteOrPoem": "Por encima de todo, vístanse de amor.",
+        "timeline": []
+      },
+      "faqAndMenu": {
+        "showFaqAndMenu": false,
+        "title": "Preguntas Frecuentes & Menú",
+        "faqs": [],
+        "menuCourses": []
+      },
+      "playlistAndPhotos": {
+        "showPlaylistAndPhotos": false,
+        "title": "Música & Fotos de Invitados"
+      },
+      "monogram": {
+        "showMonogram": false,
+        "title": "Monograma del Evento"
+      }
+    },
+    "farewell": {
+      "showFarewell": true,
+      "hashtag": "#Dara9aos",
+      "thankYouMessage": "Te estaré esperando con emoción"
+    }
+  }
+}

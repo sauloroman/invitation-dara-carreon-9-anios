@@ -1,0 +1,7 @@
+@use '../../../common/styles/variables' as vars;
+@use '../../../common/styles/mixins' as mix;
+
+.farewell {
+    padding: 10rem 0;
+    background-color: vars.$color-7;
+}

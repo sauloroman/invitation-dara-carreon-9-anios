@@ -1,0 +1,92 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.section-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.8rem;
+
+    &--align-center {
+        align-items: center;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &--align-left {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    &--align-right {
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    &__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 4.8rem;
+        height: 4.8rem;
+        border-radius: 50%;
+        background-color: vars.$color-5;
+        color: vars.$color-2;
+        margin-bottom: 1.2rem;
+        box-shadow: 0 4px 14px rgba(vars.$color-3, 0.08);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.06);
+        }
+    }
+
+    &__pretitle {
+        font-family: vars.$font-sans;
+        font-size: clamp(1rem, 2.4vw, 1.2rem);
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: vars.$color-2;
+        margin: 0 0 1.5rem 0;
+        line-height: 1.2;
+
+        &--uppercase {
+            font-family: vars.$font-sans;
+            font-size: clamp(1rem, 2.4vw, 1.2rem);
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: vars.$color-2;
+            margin-bottom: 0.3rem;
+        }
+
+        &--cursive {
+            font-family: vars.$font-cursive;
+            font-size: 2.4rem;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+    }
+
+    &__title {
+        font-family: vars.$font-cursive;
+        font-size: clamp(2.6rem, 6vw, 3.8rem);
+        font-weight: 500;
+        color: vars.$color-3;
+        line-height: 1.15;
+        margin: 0;
+        letter-spacing: normal;
+    }
+
+    &__subtitle {
+        font-family: vars.$font-sans;
+        font-size: clamp(1.2rem, 2.6vw, 1.4rem);
+        font-weight: 400;
+        color: vars.$color-text-600;
+        line-height: 1.6;
+        margin: 0.8rem 0 0 0;
+        max-width: 56rem;
+    }
+}
