@@ -43,8 +43,9 @@ try {
     const musicVariant = theme.music?.variant || theme.musicVariant || 'floating'
     const buttonVariant = theme.buttonVariant || 'primary'
 
-    // Título dinámico desde metaTitle, o hero.title, o fallback
-    const titleText = parsed.metaTitle || parsed.title || 'Jade Silvestre | XV Años'
+    // Título y descripción dinámicos desde metaTitle / metaDescription
+    const titleText = parsed.metaTitle || parsed.title || 'Dara Carreón | 9 Años'
+    const descText = parsed.metaDescription || '¡Ven a celebrar los 9 años de Dara en una fiesta al estilo Toy Story! Consulta detalles, ubicación y confirma tu asistencia.'
 
     const hasExtendedColors = palette === 9
     const scssContent = `// ==========================================================================
@@ -79,6 +80,9 @@ $color-8: ${hasExtendedColors ? `pal.$palette-${palette}-c8` : `pal.$palette-${p
         indexContent = indexContent.replace(/<title>.*?<\/title>/gi, `<title>${titleText}</title>`)
         indexContent = indexContent.replace(/<meta property="og:title" content=".*?" \/>/gi, `<meta property="og:title" content="${titleText}" />`)
         indexContent = indexContent.replace(/<meta name="twitter:title" content=".*?" \/>/gi, `<meta name="twitter:title" content="${titleText}" />`)
+        indexContent = indexContent.replace(/<meta property="og:description" content=".*?" \/>/gi, `<meta property="og:description" content="${descText}" />`)
+        indexContent = indexContent.replace(/<meta name="twitter:description" content=".*?" \/>/gi, `<meta name="twitter:description" content="${descText}" />`)
+        indexContent = indexContent.replace(/<meta name="description" content=".*?" \/>/gi, `<meta name="description" content="${descText}" />`)
         fs.writeFileSync(indexPath, indexContent, 'utf8')
     }
 

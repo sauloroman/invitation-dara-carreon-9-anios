@@ -101,3 +101,16 @@ table {
 .my-2 {
     margin: 2rem 0;
 }
+
+/* Ocultar badge / drawer inyectado por Netlify */
+netlify-drawer,
+#netlify-drawer,
+.netlify-drawer,
+[data-netlify-deploy-id],
+[data-netlify-drawer],
+iframe[src*="netlify"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+}
