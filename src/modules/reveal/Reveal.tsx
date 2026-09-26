@@ -1,64 +1,39 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { useReveal, useMusicPlayer, useConfetti } from '@/common/hooks'
-import { getSharedAudio } from '@/common/hooks/useMusicPlayer'
+import { useReveal, useConfetti } from '@/common/hooks'
 import { Particles } from '@/common/components/particles/Particles'
 import { RevealRight } from './RevealRight/RevealRight'
 import { RevealLeft } from './RevealLeft/RevealLeft'
 import start from '@/assets/images/icons/estrella.png'
 
 const CONFETTI_COLORS = [
-    '#ED1378', // Rosa Jessie
-    '#FFE600', // Amarillo Toy Story
-    '#762A73', // Morado intenso
-    '#00B4D8', // Azul vaquero brillante
-    '#FF6EA7', // Rosa chicle
-    '#FFA500', // Naranja dorada
-    '#FFFFFF', // Destellos blancos
+    '#ED1378',
+    '#FFE600',
+    '#762A73',
+    '#00B4D8',
+    '#FF6EA7',
+    '#FFA500',
+    '#FFFFFF',
 ]
 
 export const Reveal: React.FC = () => {
     const navigate = useNavigate()
-    const { onPlayMusic } = useMusicPlayer()
     const { fireConfetti } = useConfetti()
 
     const handleExtremeReached = () => {
-        // 1. Iniciar la música de inmediato y de forma síncrona con el gesto del usuario
-        try {
-            onPlayMusic()
-        } catch (e) {
-            console.warn('Audio play error:', e)
-        }
-
-        // 2. Disparar confeti de celebración
         try {
             fireConfetti({
-                particleCount: 600,
+                particleCount: 200,
                 preset: 'side-cannons',
                 colors: CONFETTI_COLORS,
-                spread: 110,
-                startVelocity: 85,
-                scalar: 1.3,
                 zIndex: 99999,
             })
-
-            fireConfetti({
-                particleCount: 160,
-                preset: 'explosion',
-                origin: { x: 0.5, y: 0.5 },
-                colors: CONFETTI_COLORS,
-                scalar: 1.25,
-                zIndex: 99999,
-            })
-        } catch (e) {
-            console.error('Confetti error:', e)
+        } catch {
+            // Ignorar error de confeti si falla
         }
 
-        // 3. Navegar a la invitación principal
-        setTimeout(() => {
-            navigate('/invitation')
-        }, 420)
+        navigate('/invitation')
     }
 
     const {
@@ -67,10 +42,9 @@ export const Reveal: React.FC = () => {
         x,
         leftWidth,
         handleDrag,
-        handleDragEnd,
     } = useReveal({
         onExtremeReached: handleExtremeReached,
-        threshold: 25,
+        threshold: 20,
     })
 
     return (
@@ -96,24 +70,12 @@ export const Reveal: React.FC = () => {
                 dragMomentum={false}
                 style={{ x }}
                 onDrag={handleDrag}
-                onDragEnd={handleDragEnd}
-                onPointerDown={() => {
-                    // Desbloquear audio en el primer toque del usuario
-                    try {
-                        const audio = getSharedAudio()
-                        if (audio && audio.paused) {
-                            audio.load()
-                        }
-                    } catch (err) {
-                        console.debug('Audio pre-warm suppressed:', err)
-                    }
-                }}
             >
                 <div className="reveal__handle-line" />
                 <div className="reveal__handle-container">
                     <span className="reveal__handle-label">Desliza</span>
                     <div className="reveal__handle-button">
-                        <img src={start} alt="Deslizar sobre" />
+                        <img src={start} alt="start" />
                     </div>
                 </div>
                 <div className="reveal__handle-line" />

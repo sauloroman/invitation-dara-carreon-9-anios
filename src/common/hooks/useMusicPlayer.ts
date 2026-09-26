@@ -7,18 +7,6 @@ import { useInvitationConfig } from './useInvitationConfig'
 import type { MusicPlayerProps, MusicPlayerVariant, ButtonVariant } from '@/common/types'
 import song from '@/assets/music/song.mp3'
 
-let sharedAudio: HTMLAudioElement | null = null
-
-export const getSharedAudio = (): HTMLAudioElement | null => {
-    if (typeof window === 'undefined') return null
-    if (!sharedAudio) {
-        sharedAudio = new Audio(song)
-        sharedAudio.loop = true
-        sharedAudio.preload = 'auto'
-    }
-    return sharedAudio
-}
-
 export const useMusicPlayer = (props?: MusicPlayerProps) => {
     const dispatch = useDispatch()
     const isPlaying = useSelector((state: RootState) => state.music.isPlaying)
@@ -28,58 +16,65 @@ export const useMusicPlayer = (props?: MusicPlayerProps) => {
     const musicConfig = ui?.music || theme?.music
 
     useEffect(() => {
-        const audio = getSharedAudio()
-        if (!audio) return
-
-        if (isPlaying) {
-            if (audio.paused) {
-                audio.play().catch((err) => {
-                    console.warn('Audio play was prevented by browser policy:', err)
-                })
+        // Al igual que en nubes-y-sonrisas, la música se inicializa y reproduce automáticamente
+        // en cuanto se entra a /invitation, ya que el usuario acaba de interactuar arrastrando el sobre.
+        if (location.pathname !== '/invitation') {
+            if (audioRef.current) {
+                audioRef.current.pause()
+                audioRef.current = null
+                dispatch(pauseMusic())
             }
-        } else {
-            if (!audio.paused) {
-                audio.pause()
-            }
+            return
         }
-    }, [isPlaying])
+
+        const audio = new Audio(song)
+        audio.loop = true
+        audio.volume = 0.55
+        audioRef.current = audio
+
+        audio.play()
+            .then(() => {
+                dispatch(playMusic())
+            })
+            .catch((error) => {
+                console.log('Autoplay prevented by browser, waiting for user gesture:', error)
+                dispatch(pauseMusic())
+            })
+
+        return () => {
+            audio.pause()
+            audioRef.current = null
+            dispatch(pauseMusic())
+        }
+    }, [location.pathname, dispatch])
 
     const onPlayMusic = () => {
-        dispatch(playMusic())
-        const audio = getSharedAudio()
-        if (audio && audio.paused) {
-            audio.play().catch((err) => {
-                console.warn('Direct play prevented:', err)
-            })
-        }
+        if (!audioRef.current) return
+        audioRef.current.play()
+            .then(() => dispatch(playMusic()))
+            .catch((err) => console.error('Playback failed:', err))
     }
 
     const onPauseMusic = () => {
+        if (!audioRef.current) return
+        audioRef.current.pause()
         dispatch(pauseMusic())
-        const audio = getSharedAudio()
-        if (audio && !audio.paused) {
-            audio.pause()
-        }
     }
 
     const onToggleMusic = () => {
-        const audio = getSharedAudio()
+        if (!audioRef.current) return
         if (isPlaying) {
+            audioRef.current.pause()
             dispatch(pauseMusic())
-            if (audio && !audio.paused) {
-                audio.pause()
-            }
         } else {
-            dispatch(playMusic())
-            if (audio && audio.paused) {
-                audio.play().catch((err) => {
-                    console.warn('Toggle play prevented:', err)
-                })
-            }
+            audioRef.current.play()
+                .then(() => dispatch(playMusic()))
+                .catch((err) => console.error('Playback failed:', err))
         }
     }
 
-    const isHiddenRoute = location.pathname === '/envelope' || location.pathname === '/search'
+    // Ocultar botón en el sobre (ruta / o /envelope) para que coincida exactamente con nubes-y-sonrisas
+    const isHiddenRoute = location.pathname === '/' || location.pathname === '/envelope' || location.pathname === '/search'
     const isMusicVisible = (props?.show ?? musicConfig?.show ?? config?.hasMusic ?? true) && !isHiddenRoute
     const activeVariant: MusicPlayerVariant = props?.variant || musicConfig?.variant || 'floating'
     const activeBtnVariant: ButtonVariant = props?.buttonVariant || musicConfig?.buttonVariant || theme.buttonVariant || 'primary'
@@ -89,7 +84,6 @@ export const useMusicPlayer = (props?: MusicPlayerProps) => {
     return {
         isPlaying,
         isMusicVisible,
-        audioRef,
         activeVariant,
         activeBtnVariant,
         activeSongTitle,
@@ -99,6 +93,3 @@ export const useMusicPlayer = (props?: MusicPlayerProps) => {
         onToggleMusic,
     }
 }
-
-
-
